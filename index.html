@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Controle CT — Eduarda Ribeiro</title><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#031525"><link rel="apple-touch-icon" href="/icon.svg">
+<style>
+:root{--navy:#102536;--navy2:#17344a;--navy3:#28465b;--ink:#182631;--muted:#6c7a86;--line:#dfe6eb;--bg:#f4f7f9;--card:#fff;--accent:#2c79b7;--accent2:#eaf3fa;--ok:#2f8061;--warn:#b87816;--danger:#b64c4c;--shadow:0 8px 25px rgba(16,37,54,.07);--r:12px}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.side{width:245px;background:var(--navy);color:#fff;padding:18px 12px;position:fixed;inset:0 auto 0 0;z-index:15;box-shadow:5px 0 20px rgba(10,25,35,.08)}.brand{display:flex;gap:10px;align-items:center;padding:4px 9px 20px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:15px}.brand .logo{width:34px;height:34px;display:grid;place-items:center;color:#fff}.brand b{font-size:18px;letter-spacing:.6px}.brand small{display:block;color:#aebdca;font-size:9px;margin-top:2px;letter-spacing:.4px}.nav{display:flex;flex-direction:column;gap:3px}.nav button{width:100%;background:transparent;border:0;color:#cbd6de;text-align:left;padding:11px 12px;border-radius:8px;margin:0;display:flex;align-items:center;gap:11px;font-size:12px;transition:.15s}.nav button:hover{background:rgba(255,255,255,.07);color:#fff}.nav button.active{background:var(--navy3);color:#fff;box-shadow:inset 3px 0 0 #8fb9d8}.nav .navicon{width:18px;height:18px;display:grid;place-items:center;flex:none;opacity:.9}.nav button b{font-weight:600;letter-spacing:.05px}.user{position:absolute;bottom:0;left:12px;right:12px;padding:15px 10px;border-top:1px solid rgba(255,255,255,.12);color:#dce5ea;font-size:12px;display:flex;gap:9px;align-items:center}.useravatar{width:28px;height:28px;border-radius:50%;background:#e9f0f4;color:var(--navy);display:grid;place-items:center;font-size:11px;font-weight:800}.main{margin-left:245px;width:calc(100% - 245px);min-width:0}.top{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.top .crumb{font-weight:700}.top .right{display:flex;gap:10px;align-items:center}.pill{cursor:pointer;padding:7px 10px;border:1px solid var(--line);border-radius:20px;background:#fff;color:var(--muted);font-size:12px}.mobile-menu{display:none;border:1px solid var(--line);background:#fff;border-radius:8px;width:38px;height:38px;align-items:center;justify-content:center}.content{padding:26px;max-width:1450px;margin:auto}.pagehead{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.pagehead h1{font-size:24px;margin:0}.pagehead p{margin:5px 0 0;color:var(--muted);font-size:13px}.btn{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:8px;color:var(--ink)}.btn.primary{background:var(--navy2);color:#fff;border-color:var(--navy2)}.btn.blue{background:var(--accent);color:#fff;border-color:var(--accent)}.btn.danger{color:var(--danger)}.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}.stat .label{font-size:12px;color:var(--muted)}.stat .value{font-size:27px;font-weight:800;margin-top:8px}.stat .sub{font-size:11px;color:var(--muted);margin-top:4px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}.field{display:flex;flex-direction:column;gap:6px;flex:1;min-width:180px}.field label{font-size:11px;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:8px;padding:10px 11px;background:#fff;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent2)}table{width:100%;border-collapse:collapse}th,td{padding:12px 9px;border-bottom:1px solid #edf1f3;text-align:left;font-size:12px}th{font-size:11px;color:var(--muted);font-weight:800}.status{display:inline-block;padding:4px 8px;border-radius:12px;font-size:10px;font-weight:800}.active{background:#e9f5ef;color:var(--ok)}.inactive{background:#fbecec;color:var(--danger)}.pending{background:#fff3df;color:var(--warn)}.bolsista-badge{background:#e8f1ff;color:#175aa6;border:1px solid #c8dcfa}.actions{display:flex;gap:5px}.iconbtn{border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 8px}.empty{text-align:center;color:var(--muted);padding:35px}.modal{position:fixed;inset:0;background:rgba(7,20,29,.5);display:none;align-items:center;justify-content:center;z-index:20;padding:20px}.modal.show{display:flex}.modalbox{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:14px;padding:22px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.modalhead h2{margin:0;font-size:19px}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.full{grid-column:1/-1}.modalfoot{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:8px;display:none;z-index:30}.toast.show{display:block}.small{font-size:11px;color:var(--muted)}.overlay{display:none}
+
+:root{--navy:#031525;--navy2:#06243b;--navy3:#0b65ad;--accent:#1689ea;--bg:#eef4f9;--ink:#163b64;--line:#d7e4ef;--shadow:0 8px 24px rgba(12,47,78,.08)}
+body{background:var(--bg);color:var(--ink)}
+.side{width:292px;background:linear-gradient(180deg,#021321 0%,#031b2e 100%);display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;padding:0 15px;box-shadow:6px 0 22px rgba(0,20,35,.12)}
+.brand{height:82px;padding:0 12px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:18px;gap:10px}
+.brand .logo{width:40px;height:40px;color:#fff}
+.brand b{font-size:17px;line-height:1.1}.brand small{font-size:11px;color:#b9ccdc}
+.nav{gap:5px;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 2px 8px;scrollbar-width:thin}.nav button{padding:13px 13px;border-radius:9px;font-size:14px;gap:12px;color:#d7e3ec}
+.nav button.active{background:#087ee0;color:#fff;box-shadow:none}
+.nav button .navicon{font-size:18px;width:20px}
+.user{position:relative;left:auto;right:auto;bottom:auto;margin-top:0;padding:15px 12px;flex:none;z-index:3;background:linear-gradient(180deg,#031b2e 0%,#031b2e 100%);border:0;border-radius:9px;width:100%;cursor:pointer;text-align:left}.user:hover{background:#0b2940}
+.main{margin-left:292px;width:calc(100% - 292px)}
+.top{height:118px;padding:0 30px;background:#061726;color:#fff;border-bottom:0;position:sticky;top:0;z-index:10;overflow:hidden}
+.top:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,19,33,.96),rgba(2,19,33,.75),rgba(2,19,33,.96));z-index:0}
+.top .brand-banner{position:relative;z-index:1;display:flex;align-items:center;gap:28px;height:100%;min-width:0}
+.top .brand-banner img{height:102px;width:330px;object-fit:contain;object-position:center}
+.top .right{position:relative;z-index:1}.top .pill{background:transparent;border-color:rgba(255,255,255,.16);color:#fff}
+.content{padding:28px;max-width:1600px}.pagehead h1{font-size:25px;color:#123f6e}.card{border-color:#d9e7f1;border-radius:11px;box-shadow:var(--shadow)}
+.btn.primary,.btn.blue{background:#087ee0;border-color:#087ee0}
+@media(max-width:900px){.side{transform:translateX(-100%);transition:.2s}.side.open{transform:translateX(0)}.main{margin-left:0;width:100%}.top{height:82px;padding:0 14px}.mobile-menu{display:flex;position:relative;z-index:2}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:14;display:none}.overlay.show{display:block}.content{padding:16px}.g2,.g3,.g4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="authGate" style="position:fixed;inset:0;z-index:99999;background:#f4f7f9;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;color:#182631">
+  <div style="background:#fff;border:1px solid #dfe6eb;border-radius:16px;padding:30px;max-width:420px;width:calc(100% - 32px);box-shadow:0 10px 35px rgba(16,37,54,.10);text-align:center">
+    <div style="font-size:28px;margin-bottom:8px">🔐</div>
+    <h2 style="margin:0 0 8px">Acesso ao sistema</h2>
+    <p style="color:#6c7a86;font-size:13px;line-height:1.5;margin:0">Verificando o acesso da recepção…</p>
+  </div>
+</div>
+
+<script>
+window.__authReady = (async function(){
+  try{
+    const r = await fetch('/api/reception/session', {credentials:'include'});
+    if(!r.ok){ window.location.href='/login'; return false; }
+    const d = await r.json();
+    const g = document.getElementById('authGate'); if(g) g.remove();
+    window.receptionUser = d;
+    return true;
+  }catch(e){
+    const g = document.getElementById('authGate');
+    if(g) g.innerHTML='<div style="background:#fff;border:1px solid #dfe6eb;border-radius:16px;padding:30px;max-width:420px;width:calc(100% - 32px);text-align:center"><div style="font-size:28px">⚠️</div><h2>Erro de acesso</h2><p style="color:#6c7a86;font-size:13px">Atualize a página.</p></div>';
+    return false;
+  }
+})();
+</script>
+
+<div class="app">
+  <aside class="side" id="side">
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 64 64" width="34" height="34" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M10 25v14M17 19v26M24 27h16M40 27h0M47 19v26M54 25v14"/><path d="M24 32h16"/></svg>
+      </div>
+      <div><b>Controle CT</b><small>Eduarda Ribeiro</small></div>
+    </div>
+    <nav class="nav" id="nav">
+      <button id="nav-dashboard" class="active" onclick="switchView('dashboard')"><span class="navicon">📊</span><b>Dashboard</b></button>
+      <button id="nav-alunos" onclick="switchView('alunos')"><span class="navicon">👥</span><b>Alunos</b></button>
+      <button id="nav-bolsistas" onclick="switchView('bolsistas')"><span class="navicon">🎓</span><b>Alunos Bolsistas</b></button>
+      <button id="nav-financeiro" onclick="switchView('financeiro')"><span class="navicon">💰</span><b>Financeiro</b></button>
+    </nav>
+    <button class="user" type="button" onclick="exportData()" title="Exportar dados do sistema">
+      <div class="useravatar">A</div>
+      <div style="text-align:left"><b>Admin</b><br><span class="small" style="color:#aebdca">Exportar/Importar</span></div>
+    </button>
+  </aside>
+
+  <div class="overlay" id="overlay" onclick="toggleMenu(false)"></div>
+
+  <main class="main">
+    <header class="top">
+      <button class="mobile-menu" onclick="toggleMenu(true)" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="brand-banner">
+        <b>SISTEMA DE GESTÃO CT</b>
+      </div>
+      <div class="right">
+        <button class="pill" onclick="openAlunoModal()">+ Novo Aluno</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- VIEW: DASHBOARD -->
+      <div id="view-dashboard" class="view">
+        <div class="pagehead">
+          <div>
+            <h1>Dashboard Visão Geral</h1>
+            <p>Acompanhamento de métricas e alunos</p>
+          </div>
+        </div>
+        <div class="grid g4" style="margin-bottom:20px">
+          <div class="card stat">
+            <div class="label">Total de Alunos</div>
+            <div class="value" id="st-total">0</div>
+          </div>
+          <div class="card stat">
+            <div class="label">Ativos</div>
+            <div class="value" id="st-ativos" style="color:var(--ok)">0</div>
+          </div>
+          <div class="card stat">
+            <div class="label">Bolsistas</div>
+            <div class="value" id="st-bolsistas" style="color:var(--navy3)">0</div>
+          </div>
+          <div class="card stat">
+            <div class="label">Inadimplentes (Exclui Bolsistas)</div>
+            <div class="value" id="st-inadimplentes" style="color:var(--danger)">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW: ALUNOS -->
+      <div id="view-alunos" class="view" style="display:none">
+        <div class="pagehead">
+          <div>
+            <h1>Gestão de Alunos</h1>
+            <p>Lista completa de inscritos</p>
+          </div>
+          <button class="btn primary" onclick="openAlunoModal()">Adicionar Aluno</button>
+        </div>
+        <div class="toolbar">
+          <div class="field">
+            <input type="text" id="search-aluno" placeholder="Buscar por nome ou endereço..." oninput="renderAlunosTable()">
+          </div>
+        </div>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Frequência</th>
+                <th>Mensalidade</th>
+                <th>Status Pagamento</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tb-alunos"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- VIEW: BOLSISTAS -->
+      <div id="view-bolsistas" class="view" style="display:none">
+        <div class="pagehead">
+          <div>
+            <h1>🎓 Alunos Bolsistas</h1>
+            <p>Alunos isentos de mensalidade (R$ 0,00)</p>
+          </div>
+        </div>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Frequência</th>
+                <th>Mensalidade</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tb-bolsistas"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- VIEW: FINANCEIRO -->
+      <div id="view-financeiro" class="view" style="display:none">
+        <div class="pagehead">
+          <div>
+            <h1>Controle Financeiro</h1>
+            <p>Situação de pagamentos (Bolsistas não aparecem como inadimplentes)</p>
+          </div>
+        </div>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Tipo</th>
+                <th>Valor Mensalidade</th>
+                <th>Status do Pagamento</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tb-financeiro"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL CADASTRO/EDIÇÃO DE ALUNO -->
+<div class="modal" id="modal-aluno">
+  <div class="modalbox">
+    <div class="modalhead">
+      <h2 id="modal-title">Novo Aluno</h2>
+      <button class="btn" onclick="closeModal('modal-aluno')">✕</button>
+    </div>
+    <form id="form-aluno" onsubmit="saveAluno(event)">
+      <input type="hidden" id="aluno-id">
+      <div class="formgrid">
+        <div class="field full">
+          <label>Nome Completo *</label>
+          <input type="text" id="aluno-nome" required>
+        </div>
+        <div class="field full">
+          <label>Endereço (Rua, Número, Bairro)</label>
+          <input type="text" id="aluno-endereco" placeholder="Ex: Rua A, 123 - Centro">
+        </div>
+        <div class="field">
+          <label>Aluno Bolsista?</label>
+          <select id="aluno-bolsista" onchange="toggleBolsistaUI()">
+            <option value="nao">Não</option>
+            <option value="sim">Sim (Mensalidade R$ 0,00)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Frequência</label>
+          <select id="aluno-frequencia" onchange="updateMensalidadeDefault()">
+            <option value="1x_semana">1x por semana</option>
+            <option value="2x_semana">2x por semana</option>
+            <option value="3x_semana">3x por semana</option>
+            <option value="livre">Livre / Todos os dias</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Valor Mensalidade (R$)</label>
+          <input type="number" step="0.01" id="aluno-mensalidade" value="100.00">
+        </div>
+        <div class="field">
+          <label>Status Financeiro</label>
+          <select id="aluno-status-pagamento">
+            <option value="quitado">Mensalidade Quitada</option>
+            <option value="vencido">Vencida / Pendente</option>
+          </select>
+        </div>
+      </div>
+      <div class="modalfoot">
+        <button type="button" class="btn" onclick="closeModal('modal-aluno')">Cancelar</button>
+        <button type="submit" class="btn primary">Salvar Aluno</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+let state = {
+  alunos: []
+};
+
+// Sincronização e Migração Auto V50
+async function loadState() {
+  try {
+    const res = await fetch('/api/academy/state');
+    if(res.ok) {
+      const data = await res.json();
+      state.alunos = data.alunos || [];
+    }
+  } catch(e) {
+    console.warn("Falha na API, usando dados locais.", e);
+  }
+  
+  // Garantir compatibilidade com V50 (Campos padrões adicionados automaticamente)
+  state.alunos = state.alunos.map(a => ({
+    id: a.id || Date.now() + Math.random(),
+    nome: a.nome || 'Sem Nome',
+    endereco: a.endereco || '',
+    bolsista: a.bolsista || 'nao',
+    frequencia: a.frequencia || '2x_semana',
+    mensalidade: a.bolsista === 'sim' ? 0 : (a.mensalidade !== undefined ? Number(a.mensalidade) : 100.00),
+    statusPagamento: a.bolsista === 'sim' ? 'quitado' : (a.statusPagamento || 'vencido'),
+    ativo: a.ativo !== undefined ? a.ativo : true
+  }));
+
+  renderAll();
+}
+
+async function syncState() {
+  try {
+    await fetch('/api/academy/state', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(state)
+    });
+  } catch(e) {
+    console.error("Erro ao sincronizar estado", e);
+  }
+}
+
+function renderAll() {
+  renderDashboard();
+  renderAlunosTable();
+  renderBolsistasTable();
+  renderFinanceiroTable();
+}
+
+function switchView(viewName) {
+  document.querySelectorAll('.view').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.nav button').forEach(el => el.classList.remove('active'));
+  
+  document.getElementById(`view-${viewName}`).style.display = 'block';
+  document.getElementById(`nav-${viewName}`).classList.add('active');
+}
+
+function toggleMenu(open) {
+  document.getElementById('side').classList.toggle('open', open);
+  document.getElementById('overlay').classList.toggle('show', open);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerText = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// LÓGICA DE NEGÓCIO E RENDERIZAÇÃO
+function renderDashboard() {
+  const total = state.alunos.length;
+  const ativos = state.alunos.filter(a => a.ativo).length;
+  const bolsistas = state.alunos.filter(a => a.bolsista === 'sim').length;
+  // Inadimplentes: Exclui Bolsistas
+  const inadimplentes = state.alunos.filter(a => a.bolsista !== 'sim' && a.statusPagamento === 'vencido').length;
+
+  document.getElementById('st-total').innerText = total;
+  document.getElementById('st-ativos').innerText = ativos;
+  document.getElementById('st-bolsistas').innerText = bolsistas;
+  document.getElementById('st-inadimplentes').innerText = inadimplentes;
+}
+
+function getFreqText(freq) {
+  const map = {
+    '1x_semana': '1x por semana',
+    '2x_semana': '2x por semana',
+    '3x_semana': '3x por semana',
+    'livre': 'Livre'
+  };
+  return map[freq] || freq;
+}
+
+function renderAlunosTable() {
+  const q = (document.getElementById('search-aluno').value || '').toLowerCase();
+  const tb = document.getElementById('tb-alunos');
+  tb.innerHTML = '';
+
+  const filtered = state.alunos.filter(a => 
+    a.nome.toLowerCase().includes(q) || (a.endereco && a.endereco.toLowerCase().includes(q))
+  );
+
+  if(!filtered.length) {
+    tb.innerHTML = '<tr><td colspan="6" class="empty">Nenhum aluno encontrado</td></tr>';
+    return;
+  }
+
+  filtered.forEach(a => {
+    const isBolsista = a.bolsista === 'sim';
+    const statusClass = isBolsista ? 'active bolsista-badge' : (a.statusPagamento === 'quitado' ? 'active' : 'pending');
+    const statusText = isBolsista ? '🎓 Bolsista' : (a.statusPagamento === 'quitado' ? 'Mensalidade Quitada' : 'Vencida');
+
+    tb.innerHTML += `
+      <tr>
+        <td><b>${a.nome}</b></td>
+        <td>${a.endereco || '-'}</td>
+        <td>${getFreqText(a.frequencia)}</td>
+        <td>R$ ${a.mensalidade.toFixed(2)}</td>
+        <td><span class="status ${statusClass}">${statusText}</span></td>
+        <td class="actions">
+          <button class="iconbtn" onclick="editAluno('${a.id}')">✏️ Edit</button>
+          <button class="iconbtn" onclick="deleteAluno('${a.id}')">🗑️</button>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+function renderBolsistasTable() {
+  const tb = document.getElementById('tb-bolsistas');
+  tb.innerHTML = '';
+
+  const bolsistas = state.alunos.filter(a => a.bolsista === 'sim');
+
+  if(!bolsistas.length) {
+    tb.innerHTML = '<tr><td colspan="6" class="empty">Nenhum aluno bolsista cadastrado</td></tr>';
+    return;
+  }
+
+  bolsistas.forEach(a => {
+    tb.innerHTML += `
+      <tr>
+        <td><b>${a.nome}</b></td>
+        <td>${a.endereco || '-'}</td>
+        <td>${getFreqText(a.frequencia)}</td>
+        <td>R$ 0,00</td>
+        <td><span class="status active bolsista-badge">Isento (Bolsista)</span></td>
+        <td class="actions">
+          <button class="iconbtn" onclick="editAluno('${a.id}')">✏️ Edit</button>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+function renderFinanceiroTable() {
+  const tb = document.getElementById('tb-financeiro');
+  tb.innerHTML = '';
+
+  state.alunos.forEach(a => {
+    const isBolsista = a.bolsista === 'sim';
+    const statusText = isBolsista ? 'Mensalidade Quitada (Bolsista)' : (a.statusPagamento === 'quitado' ? 'Mensalidade Quitada' : 'Vencida');
+    const statusClass = (isBolsista || a.statusPagamento === 'quitado') ? 'active' : 'inactive';
+
+    tb.innerHTML += `
+      <tr>
+        <td><b>${a.nome}</b></td>
+        <td>${isBolsista ? '🎓 Bolsista' : 'Pagante'}</td>
+        <td>R$ ${a.mensalidade.toFixed(2)}</td>
+        <td><span class="status ${statusClass}">${statusText}</span></td>
+        <td class="actions">
+          ${!isBolsista ? `<button class="btn blue" onclick="togglePagamento('${a.id}')">Alternar Status</button>` : '<i>Isento</i>'}
+        </td>
+      </tr>
+    `;
+  });
+}
+
+// MODAL & CADASTRO
+function openAlunoModal() {
+  document.getElementById('form-aluno').reset();
+  document.getElementById('aluno-id').value = '';
+  document.getElementById('modal-title').innerText = 'Novo Aluno';
+  toggleBolsistaUI();
+  document.getElementById('modal-aluno').classList.add('show');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+function toggleBolsistaUI() {
+  const isBolsista = document.getElementById('aluno-bolsista').value === 'sim';
+  const inputMensalidade = document.getElementById('aluno-mensalidade');
+  const selectStatus = document.getElementById('aluno-status-pagamento');
+
+  if(isBolsista) {
+    inputMensalidade.value = '0.00';
+    inputMensalidade.disabled = true;
+    selectStatus.value = 'quitado';
+    selectStatus.disabled = true;
+  } else {
+    inputMensalidade.disabled = false;
+    selectStatus.disabled = false;
+    updateMensalidadeDefault();
+  }
+}
+
+function updateMensalidadeDefault() {
+  const isBolsista = document.getElementById('aluno-bolsista').value === 'sim';
+  if(isBolsista) return;
+
+  const freq = document.getElementById('aluno-frequencia').value;
+  const inputMensalidade = document.getElementById('aluno-mensalidade');
+  
+  if(freq === '1x_semana') {
+    inputMensalidade.value = '70.00'; // Valor editável para 1x/semana
+  } else if(freq === '2x_semana') {
+    inputMensalidade.value = '100.00';
+  } else {
+    inputMensalidade.value = '130.00';
+  }
+}
+
+function editAluno(id) {
+  const a = state.alunos.find(x => String(x.id) === String(id));
+  if(!a) return;
+
+  document.getElementById('aluno-id').value = a.id;
+  document.getElementById('aluno-nome').value = a.nome;
+  document.getElementById('aluno-endereco').value = a.endereco || '';
+  document.getElementById('aluno-bolsista').value = a.bolsista || 'nao';
+  document.getElementById('aluno-frequencia').value = a.frequencia || '2x_semana';
+  document.getElementById('aluno-mensalidade').value = a.mensalidade;
+  document.getElementById('aluno-status-pagamento').value = a.statusPagamento || 'vencido';
+
+  toggleBolsistaUI();
+  document.getElementById('modal-title').innerText = 'Editar Aluno';
+  document.getElementById('modal-aluno').classList.add('show');
+}
+
+function saveAluno(e) {
+  e.preventDefault();
+  const id = document.getElementById('aluno-id').value;
+  const isBolsista = document.getElementById('aluno-bolsista').value === 'sim';
+
+  const payload = {
+    id: id ? id : Date.now().toString(),
+    nome: document.getElementById('aluno-nome').value,
+    endereco: document.getElementById('aluno-endereco').value,
+    bolsista: document.getElementById('aluno-bolsista').value,
+    frequencia: document.getElementById('aluno-frequencia').value,
+    mensalidade: isBolsista ? 0 : parseFloat(document.getElementById('aluno-mensalidade').value || 0),
+    statusPagamento: isBolsista ? 'quitado' : document.getElementById('aluno-status-pagamento').value,
+    ativo: true
+  };
+
+  if(id) {
+    const idx = state.alunos.findIndex(x => String(x.id) === String(id));
+    if(idx !== -1) state.alunos[idx] = payload;
+  } else {
+    state.alunos.push(payload);
+  }
+
+  syncState();
+  renderAll();
+  closeModal('modal-aluno');
+  showToast('Aluno salvo com sucesso!');
+}
+
+function deleteAluno(id) {
+  if(confirm('Deseja realmente remover este aluno?')) {
+    state.alunos = state.alunos.filter(x => String(x.id) !== String(id));
+    syncState();
+    renderAll();
+    showToast('Aluno removido.');
+  }
+}
+
+function togglePagamento(id) {
+  const a = state.alunos.find(x => String(x.id) === String(id));
+  if(a && a.bolsista !== 'sim') {
+    a.statusPagamento = a.statusPagamento === 'quitado' ? 'vencido' : 'quitado';
+    syncState();
+    renderAll();
+    showToast('Status financeiro atualizado!');
+  }
+}
+
+// IMPORTAÇÃO / EXPORTAÇÃO
+function exportData() {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", "CT_Eduarda_Ribeiro_Backup.json");
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+}
+
+window.onload = () => {
+  loadState();
+};
+</script>
+</body>
+</html>
